@@ -19,12 +19,14 @@ body {
   align-items: center;
   height: 100vh;
   overflow: hidden;
+  background-color: rgb(33, 33, 33);
 }
 
 main {
   background-color: var(--background-principal);
   padding: 20px;
   border-radius: 10px;
+  width: 600px;
 }
 
 .container-result {
@@ -52,6 +54,7 @@ main {
   height: 35px;
   padding: 8px 20px;
   color: #d6d6d6;
+  letter-spacing: 2px;
 }
 
 .container-operations {
