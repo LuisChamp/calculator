@@ -2,23 +2,43 @@ export function showBtn(btn) {
     const $operation = document.querySelector(".operation");
     const $result = document.querySelector(".result");
 
-    $operation.innerHTML += btn.innerHTML;
+    const operations = ["+", "-", "/", "x"];
 
+    //regex: /[+-/x]/g
+
+    if (sessionStorage.getItem("operation")) {
+        //$result.innerHTML
+        $result.innerHTML = "";
+        sessionStorage.clear();
+    }
+
+
+    // Show operation in progress
+    if (operations.includes(btn.innerHTML)) {
+        $operation.innerHTML += `${$result.innerHTML} ${btn.innerHTML} `;
+        sessionStorage.setItem("operation", btn.innerHTML);
+    }
+
+    // Show result at the first moment
     if (!$result.innerHTML || !$operation.innerHTML.endsWith("+")) {
         $result.innerHTML += btn.innerHTML;
     }
 
-    // 9 + 9
-    /*const operation = $operation.innerHTML.split("");
+    // Show result after operation
+    const operation = $operation.innerHTML.split(" ");
 
-    operation.*/
+    if (operation.length >= 3) {
+        operation.forEach((number, index) => {
+            if (operations.includes(number)) {
+                if (number === "+") {
+                    const num1 = operation[index - 1];
+                    const num2 = operation[index + 1];
+                    console.log(parseInt(num1) + parseInt(num2));
+                }
+            }
+        })
+    }
 
-    //console.log(operation);
-
-    /*if ($operation.innerHTML.endsWith("+")) {
-        addition($result.innerHTML + );
-        console.log("bien");
-    }*/
 }
 
 function addition(a, b) {
